@@ -1,52 +1,70 @@
 package com.exercise.Facebook_exercise;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.security.MessageDigest;
+import com.facebook.login.LoginManager;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "MainActivity";
+    private ImageView qrImage;
     private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         mContext = getApplicationContext();
+        setContentView(R.layout.activity_main);
+        qrImage = findViewById(R.id.qr_image);
 
-        getHashKey(mContext);
+        findViewById(R.id.button_create_qr).setOnClickListener(this);
+        findViewById(R.id.btn_facebook_logout).setOnClickListener(this);
     }
 
-    // 프로젝트의 해시키를 반환
-    @Nullable
-    public static String getHashKey(Context context) {
-        final String TAG = "KeyHash";
-        String keyHash = null;
-        try {
-            PackageInfo info =
-                    context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md;
-                md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                keyHash = new String(Base64.encode(md.digest(), 0));
-                Log.d(TAG, keyHash);
-            }
-        } catch (Exception e) {
-            Log.e("name not found", e.toString());
-        }
 
-        if (keyHash != null) {
-            return keyHash;
-        } else {
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.button_create_qr) {
+            Toast.makeText(this, "버튼클릭!", Toast.LENGTH_SHORT).show();
+            Bitmap createdQr = createQrImage("https://www.naver.com");
+            if (createdQr == null) {
+                Toast.makeText(this, "QR 이미지 생성 실패", Toast.LENGTH_SHORT).show();
+            } else {
+                qrImage.setImageBitmap(createdQr);
+                Toast.makeText(this, "QR 이미지 생성", Toast.LENGTH_SHORT).show();
+            }
+        } else if (view.getId() == R.id.btn_facebook_logout) {
+            Toast.makeText(this, "로그아웃 버튼클릭!", Toast.LENGTH_SHORT).show();
+            LoginManager.getInstance().logOut();
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            finish();
+            startActivity(intent);
+        }
+    }
+
+    private Bitmap createQrImage(String content) {
+
+        MultiFormatWriter formatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = formatWriter.encode(content, BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            return bitmap;
+        } catch (Exception e) {
+            Log.d(TAG, "createQrImage: Error");
+            e.printStackTrace();
             return null;
         }
     }
