@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise;
+package com.exercise.Facebook_exercise.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.exercise.Facebook_exercise.R;
+import com.exercise.Facebook_exercise.models.QrTokenResponse;
+import com.exercise.Facebook_exercise.viewmodels.QrTokenViewModel;
 import com.facebook.login.LoginManager;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -18,16 +23,31 @@ import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private QrTokenViewModel viewModel;
     private static final String TAG = "MainActivity";
     private ImageView qrImage;
     private Context mContext;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = getApplicationContext();
         setContentView(R.layout.activity_main);
+        token = "";
+
+        mContext = getApplicationContext();
         qrImage = findViewById(R.id.qr_image);
+
+        viewModel = ViewModelProviders.of(this).get(QrTokenViewModel.class);
+        viewModel.init();
+        viewModel.getQrTokenResponseLiveData().observe(this, new Observer<QrTokenResponse>() {
+            @Override
+            public void onChanged(QrTokenResponse qrTokenResponse) {
+                if (qrTokenResponse != null) {
+                    qrImage.setImageBitmap(MainActivity.this.createQrImage(qrTokenResponse.getToken()));
+                }
+            }
+        });
 
         findViewById(R.id.button_create_qr).setOnClickListener(this);
         findViewById(R.id.btn_facebook_logout).setOnClickListener(this);
@@ -37,14 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button_create_qr) {
-            Toast.makeText(this, "버튼클릭!", Toast.LENGTH_SHORT).show();
-            Bitmap createdQr = createQrImage("https://www.naver.com");
-            if (createdQr == null) {
-                Toast.makeText(this, "QR 이미지 생성 실패", Toast.LENGTH_SHORT).show();
-            } else {
-                qrImage.setImageBitmap(createdQr);
-                Toast.makeText(this, "QR 이미지 생성", Toast.LENGTH_SHORT).show();
-            }
+            performRefreshQR();
+
         } else if (view.getId() == R.id.btn_facebook_logout) {
             Toast.makeText(this, "로그아웃 버튼클릭!", Toast.LENGTH_SHORT).show();
             LoginManager.getInstance().logOut();
@@ -52,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
             startActivity(intent);
         }
+    }
+
+    private void performRefreshQR() {
+        Toast.makeText(this, "버튼클릭!", Toast.LENGTH_SHORT).show();
+        viewModel.refreshQrToken(token);
     }
 
     private Bitmap createQrImage(String content) {

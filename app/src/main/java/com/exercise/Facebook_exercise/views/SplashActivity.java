@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise;
+package com.exercise.Facebook_exercise.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.exercise.Facebook_exercise.R;
+import com.exercise.Facebook_exercise.views.LoginActivity;
+import com.exercise.Facebook_exercise.views.MainActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.FacebookSdk;
@@ -27,6 +30,8 @@ public class SplashActivity extends AppCompatActivity {
 
         mContext = getApplicationContext();
 
+        FacebookSdk.sdkInitialize(mContext);
+
         accessTokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(
@@ -43,8 +48,6 @@ public class SplashActivity extends AppCompatActivity {
         };
         accessTokenTracker.startTracking();
 
-        // load Password
-        FacebookSdk.sdkInitialize(mContext);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -61,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-        }, 4000);
+        }, 2000);
 
     }
 

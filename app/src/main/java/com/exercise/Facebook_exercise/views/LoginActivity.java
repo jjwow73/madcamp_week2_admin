@@ -1,15 +1,16 @@
-package com.exercise.Facebook_exercise;
+package com.exercise.Facebook_exercise.views;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.exercise.Facebook_exercise.apis.LoginCallback;
+import com.exercise.Facebook_exercise.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.GraphRequest;
