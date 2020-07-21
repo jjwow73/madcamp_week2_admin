@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise;
+package com.madcamp.week2_admin.apis;
 
 /**
  * Created by jongwow on 2020-07-17.

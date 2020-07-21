@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise;
+package com.madcamp.week2_admin;
 
 import org.junit.Test;
 
