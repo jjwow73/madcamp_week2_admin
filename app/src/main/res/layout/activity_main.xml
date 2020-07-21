@@ -3,35 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background_selector"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".views.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <ImageView
         android:id="@+id/qr_image"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:contentDescription="qr code image"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@android:color/white" />
 
     <Button
         android:id="@+id/button_create_qr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="QR 생성" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.7"
+        android:background="@drawable/round_button_white"
+        android:text="QR 생성"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/btn_facebook_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그아웃" />
-
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.7"
+        android:background="@drawable/round_button_white"
+        android:text="로그아웃"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

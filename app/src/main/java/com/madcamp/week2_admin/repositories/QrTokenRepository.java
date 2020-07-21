@@ -28,10 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class QrTokenRepository {
     private static final String BASE_URL = "http://192.249.19.243:8780";
-    //    private static final String BASE_URL = "http://10.0.2.2:3000";
-    private QrTokenService qrTokenService;
+    private static QrTokenService qrTokenService;
     private MutableLiveData<QrTokenResponse> qrTokenResponseLiveData;
-    private Socket mSocket;
+    private static Socket mSocket;
     private static final String TAG = "QrTokenRepository";
 
     public QrTokenRepository() {

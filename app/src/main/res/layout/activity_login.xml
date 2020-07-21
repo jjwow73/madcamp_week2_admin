@@ -6,32 +6,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login_background_selector"
     tools:context=".views.LoginActivity">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="200dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="45dp"
-
-        android:background="@android:color/white"
-        android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/textView"
-        android:gravity="center"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="상태"
-        android:layout_gravity="center_horizontal"
-        />
-    <com.facebook.login.widget.LoginButton
-        android:layout_gravity="center"
-        android:id="@+id/btn_facebook_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/textBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginVertical="40dp"
+            android:padding="40dp"
+            android:background="@drawable/round_background"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="상태"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <com.facebook.login.widget.LoginButton
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:id="@+id/btn_facebook_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
     </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>

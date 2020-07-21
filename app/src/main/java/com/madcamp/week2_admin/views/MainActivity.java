@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MultiFormatWriter formatWriter = new MultiFormatWriter();
         try {
-            BitMatrix bitMatrix = formatWriter.encode(content, BarcodeFormat.QR_CODE, 200, 200);
+            BitMatrix bitMatrix = formatWriter.encode(content, BarcodeFormat.QR_CODE, 300,300);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             return bitmap;
