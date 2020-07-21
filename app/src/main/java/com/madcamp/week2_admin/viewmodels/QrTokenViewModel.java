@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.viewmodels;
+package com.madcamp.week2_admin.viewmodels;
 
 import android.app.Application;
 
@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.exercise.Facebook_exercise.models.QrTokenResponse;
-import com.exercise.Facebook_exercise.repositories.QrTokenRepository;
+import com.madcamp.week2_admin.models.QrTokenResponse;
+import com.madcamp.week2_admin.repositories.QrTokenRepository;
 
 /**
  * Created by jongwow on 2020-07-21.

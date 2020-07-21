@@ -1,6 +1,6 @@
-package com.exercise.Facebook_exercise.apis;
+package com.madcamp.week2_admin.apis;
 
-import com.exercise.Facebook_exercise.models.QrTokenResponse;
+import com.madcamp.week2_admin.models.QrTokenResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

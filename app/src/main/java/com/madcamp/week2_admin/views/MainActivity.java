@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.views;
+package com.madcamp.week2_admin.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.exercise.Facebook_exercise.R;
-import com.exercise.Facebook_exercise.lib.BackPressHandler;
-import com.exercise.Facebook_exercise.viewmodels.QrTokenViewModel;
+import com.madcamp.week2_admin.R;
+import com.madcamp.week2_admin.lib.BackPressHandler;
+import com.madcamp.week2_admin.viewmodels.QrTokenViewModel;
 import com.facebook.login.LoginManager;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;

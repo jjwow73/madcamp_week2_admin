@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.models;
+package com.madcamp.week2_admin.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

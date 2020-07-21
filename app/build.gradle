@@ -10,7 +10,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.exercise.Facebook_exercise"
+        applicationId "com.madcamp.week2_admin"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1

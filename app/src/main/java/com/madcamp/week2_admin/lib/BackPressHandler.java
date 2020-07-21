@@ -1,10 +1,10 @@
-package com.exercise.Facebook_exercise.lib;
+package com.madcamp.week2_admin.lib;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.exercise.Facebook_exercise.views.LoginActivity;
+import com.madcamp.week2_admin.views.LoginActivity;
 import com.facebook.login.LoginManager;
 
 /**

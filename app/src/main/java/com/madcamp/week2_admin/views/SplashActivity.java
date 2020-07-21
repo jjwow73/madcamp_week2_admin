@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.views;
+package com.madcamp.week2_admin.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,9 +8,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.exercise.Facebook_exercise.R;
-import com.exercise.Facebook_exercise.views.LoginActivity;
-import com.exercise.Facebook_exercise.views.MainActivity;
+import com.madcamp.week2_admin.R;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.FacebookSdk;

@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.models;
+package com.madcamp.week2_admin.models;
 
 /**
  * Created by jongwow on 2020-07-21.

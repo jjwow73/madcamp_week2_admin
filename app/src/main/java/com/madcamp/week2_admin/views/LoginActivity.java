@@ -1,4 +1,4 @@
-package com.exercise.Facebook_exercise.views;
+package com.madcamp.week2_admin.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.exercise.Facebook_exercise.apis.LoginCallback;
-import com.exercise.Facebook_exercise.R;
+import com.madcamp.week2_admin.apis.LoginCallback;
+import com.madcamp.week2_admin.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.GraphRequest;

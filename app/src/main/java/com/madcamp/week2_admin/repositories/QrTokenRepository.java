@@ -1,10 +1,10 @@
-package com.exercise.Facebook_exercise.repositories;
+package com.madcamp.week2_admin.repositories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.exercise.Facebook_exercise.apis.QrTokenService;
-import com.exercise.Facebook_exercise.models.QrTokenResponse;
+import com.madcamp.week2_admin.apis.QrTokenService;
+import com.madcamp.week2_admin.models.QrTokenResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
